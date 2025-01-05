@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<style>
+    * {
+
+        box-sizing: border-box;
+
+    }
+    .mainbox {
+        background-color: rgb(247, 252, 252);
+        width: 796px;
+        height: 1123px;
+        margin: auto;
+        box-shadow: 5px 21px 20px 20px #3d3f4238;
+    }
+
+    .sleft {
+        background-color: #cabeb5;
+        width: 42%;
+        height: 1123px;
+
+        float: left;
+    }
+
+    .profile {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .bbox {
+        width: 257px;
+        height: 407px;
+    }
+    .proimg {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        border: 2px solid rgb(126, 155, 189);
+        left: 50%;
+        top: 25%;
+        position: absolute;
+        z-index: 9;
+        transform: translate(-50%, -50%);
+    }
+    .name {
+        color: rgb(110, 72, 40);
+        text-align: center;
+        margin-top: -215px;
+        font-size: 30px;
+        letter-spacing: 2px;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+    }
+    .name span {
+        color: rgb(11, 11, 12);
+    }
+    .name-p {
+        margin: auto;
+        text-align: center;
+        border-bottom: 1px solid var(--gray);
+        border-top: 1px solid var(--gray);
+        color: var(--gray);
+        margin-top: -14px;
+        padding-bottom: 14px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .heading {
+        border-bottom: 1px solid var(--gray);
+        border-top: 1px solid var(--gray);
+        margin-bottom: 20px;
+        color: rgb(110, 72, 40);
+        margin-top:38px;
+        text-transform: uppercase;
+        font-size: 19px;
+        margin-left: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+
+    }
+
+    .heading1 {
+        /* width: 180px; */
+
+        border-bottom: 1px solid var(--gray);
+        border-top: 1px solid var(--gray);
+        margin-bottom: 20px;
+        color: rgb(110, 72, 40);
+        /* margin-top:38px; */
+
+        text-transform: uppercase;
+        font-size: 19px;
+        margin-left: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+
+    }
+    .p1 {
+        color: var(--gray);
+
+        margin: 0 auto;
+        margin-top: 2px;
+        font-size: 14px;
+        /* line-height: 14px; */
+        margin-left: 15px;
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .hr {
+        width: 80%;
+        height: 6px;
+
+        margin-left: 30px;
+        border: 2px solid  rgb(110, 72, 40);;
+
+    }
+
+    .span1 {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 10px;
+    }
+
+    .pp {
+        padding: 3px;
+        margin-top: -18px;
+        margin-bottom: 10px;
+    }
+
+    .sright {
+        padding: 40px 30px;
+        background: var(--white);
+        width: 58%;
+        float: left;
+
+        height: 1123px;
+    }
+
+    .img {
+        height: 17px;
+        width: 17px;
+        margin-right: 8px;
+    }
+    .gml{
+        height: 19px;
+        width: 20px;
+        margin-right: 8px;
+    }
+
+    .db {
+        float: right;
+        margin-top: 5px;
+        margin-right:160px;
+
+        width: 10vw;
+        height: 6vh;
+        background-color: black;
+        color: #fff;
+        border: 2px solid white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    /* .db:hover{
+        background-color:rgb(84, 133, 173);
+        color: black;
+        border: 2px solid white;
+    } */
+</style>
+{% endblock style %}
+
+
+{% block body %}
+
+
+<!-- <body> -->
+<button onclick="myfun('pt')" class="db">Download Now</button>
+<div id="pt">
+    <div class="mainbox">
+        <div class="sleft">
+            {% if pdata.image %}
+            <div class="profile">
+                <img src="{{pdata.image.url}}" class="proimg">
+                <div class="bbox"></div>
+            </div>
+            {% else %}
+            <div class="profile">
+                <img src="" class="proimg" alt="Upload image">
+                <div class="bbox"></div>
+            </div>
+            {% endif %}
+            <h2 class="name">{{pdata.candidate_name}}</span></h2>
+            <!-- <p class="name-p"><u> Web Designer & Developer</u></p> -->
+            <hr class="hr">
+            <div class="contact">
+
+                <p class="heading">Contact</p>
+                <div class="pp">
+                    <p class="p1"><img src="{% static 'img/location.png' %}" alt="" class="gml"><span
+                        class="span1">{{pdata.address}}</span></p>
+                <p class="p1"><img src="{% static 'img/call.png' %}" alt="" class="img"><span
+                        class="span1">{{pdata.mobile}}</span></p>
+                <p class="p1"><img src="{% static 'img/mail.png' %}" alt="" class="gml"><span
+                        class="span1">{{pdata.candidate_email}}</span></p>
+                        {% if pdata.my_website %} 
+                <p class="p1"><img src="{% static 'img/myweb.png' %}" alt="" class="img"><span
+                        class="span1">{{pdata.my_website|default:""}}</span></p>
+                        {% endif %}
+                        {% if pdata.linkedin_profile %} 
+                <p class="p1"><img src="{% static 'img/linked in.png' %}" alt="" class="img"><span
+                        class="span1">{{pdata.linkedin_profile|default:""}}</span></p>
+                        {% endif %}
+                        {% if pdata.github_profile %} 
+                <p class="p1"><img src="{% static 'img/github.png' %}" alt="" class="gml"><span
+                        class="span1">{{pdata.github_profile|default:""}}</span></p>
+                        {% endif %}
+                        {% if pdata.facebook_profile %} 
+                        <p class="p1"><img src="{% static 'img/facebook.png' %}" alt="" class="img"><span
+                        class="span1">{{pdata.facebook_profile}}</span></p>
+                          {% endif %}
+                          {% if pdata.twitter_profile %} 
+                <p class="p1"><img src="{% static 'img/twitter.png' %}" alt="" class="img"><span class="span1">
+                        {{pdata.twitter_profile}}</span></p>
+                        {% endif %}
+                </div>
+            </div>
+            <!-- pd//personal info -->
+            <div class="pi">
+
+                <p class="heading">Personal Info</p>
+                <div class="pp">
+                    <p class="p1">Date of Birth-<span class="span1">{{pdata.date_of_birth}}</span></p>
+                    <p class="p1">Marital Status-<span class="span1"> {{pdata.marital_status}}</span></p>
+                    <p class="p1">Nationality-<span class="span1">{{pdata.nationality}}</span></p>
+                </div>
+            </div>
+            <div class="skills">
+                <p class="heading">Skills</p>
+                <div class="pp">
+                    <p class="p1"><span class="span1">{{ pdata.skills}}</span></p>
+                    
+
+
+                </div>
+            </div>
+            {% if adata %}
+            <div>
+                <p class="heading">Achivements</p>
+                <div class="pp">
+                    {% for i in adata %}
+                    <p class="p1">Title-<span class="span1">{{i.title }}</span></p>
+                    <p class="p1">Description<span class="span1">{{i.description}}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% if pdata %}
+            <div class="language">
+                <p class="heading">Language known</p>
+                <div class="pp">
+                    <p class="p1"><span class="span1">{{pdata.language_known}}</span></p>
+
+                </div>
+
+            </div>
+            {% endif %}
+            {% if pdata %}
+            <div class="interest">
+                <p class="heading">Interest</p>
+                <div class="pp">
+                    <p class="p1"><span class="span1">{{pdata.interest}}</span></p>
+
+
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="sright">
+            <div class="objective">
+                <p class="heading1">Objective</p>
+                <div class="pp">
+                    <p class="p1"><span class="span1">{{pdata.objective}}</span></p>
+
+                </div>
+            </div>
+            {% if exdata %}
+            <div class="Experience">
+
+                <p class="heading1">Experience</p>
+                <div class="pp">
+                    {% for i in exdata%}
+                    <p class="p1"><span class="span1"><b>{{i.start_date}}-{{i.end_date}}</b></span>
+                    </p>
+                    <p class="p1"><span class="span1"><b>{{i.company_name}}</b> - {{i.designation}}</span>
+                    </p>
+                    <p class="p1"><span class="span1">{{i.description}}</span></p>
+                    {% endfor %}
+                </div>
+
+            </div>
+            {% endif %}
+
+            {% if tdata %}
+            <div class="Training">
+                <p class="heading1">Training</p>
+                <div class="pp">
+                    {% for i in tdata %}
+                    <p class="p1"><span class="span1"><b>{{i.company_or_institute_name}}</b></span>
+                    </p>
+                    <p class="p1"><span class="span1"><b>{{i.learn_skills}}</b> in  {{i.duration_in_month}} Months</span>
+                    </p>
+                    <p class="p1"><span class="span1">{{i.description}}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if edata %}
+            <div class="Education">
+
+                <p class="heading1">Education</p>
+                <div class="pp">
+                    {% for i in edata %}
+                    <p class="p1"><span class="span1"><b>{{i.education_name}} - {{i.passing_year}}  </b></span></p>
+                    <p class="p1"><span class="span1">{{i.board_or_university}}</span></p>
+                    <p class="p1"><span class="span1">{{i.percentage_or_grade}}</span></p>
+                    <br>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+            {% endif %}
+            {% if prdata %}
+            <div class="projects1">
+
+                <p class="heading1">Projects</p>
+                <div class="pp">
+                    {% for i in prdata %}
+                    <p class="p1"><span class="span1"><b>{{i.project_title}}</b></span></p>
+                    <p class="p1"><span class="span1">{{i.description}}</span></p>
+                    <p class="p1"><span class="span1">{{i.skills_apply}}</span></p>
+                    <p class="p1"><span class="span1">Duration - {{i.duration_in_months}} Month</span></p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function myfun(pa) {
+        var bk = document.body.innerHTML;
+        var dv = document.getElementById(pa).innerHTML;
+        document.body.innerHTML = dv;
+        window.print();
+    }
+</script>
+{% endblock body %}

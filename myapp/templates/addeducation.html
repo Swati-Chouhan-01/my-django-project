@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style %}
+<style>
+  body {
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url({% static 'img/laptop.jpg' %});
+
+  
+  }
+ 
+
+.font {
+  font-size: 18px;
+  color: #fff;
+}
+
+hr {
+  height: 6px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  margin-top: 20px;
+}
+
+
+
+.left {
+  margin-left:40px;
+  width: 40vw;
+  height: 65vh;
+}
+
+.margin {
+  margin-top: 20px;
+  margin-bottom: 3px;
+  
+}
+
+.tbl{
+width: 40vw;
+color: #fff;
+}
+.sp{
+  margin-top: 40px;
+}
+.sp1{
+  margin-top: 76px;
+}
+.topbtn{
+  width:14vw;
+  height: 5vh;
+  background-color: rgb(18, 20, 18);
+  color: #41c75c;
+  font-size: 18px;
+  border: 2px solid #fff;
+}
+.topbtn:hover{
+  background-color: #194923;
+  color: #fff;
+}
+</style>
+{% endblock style %}
+{% block body %}
+
+<div class="container-fluid">
+
+  <body>
+    <div class="text-center mt-2">
+      <a href="{% url 'showinfo' id %}"><button class="btn topbtn">Show Inormation</button> </a>
+      <a href="{% url 'addeducation' id %}"><button class="btn topbtn">Add Education</button> </a>
+      <a href="{% url 'addexperience' id %}"><button class="btn topbtn">Add Experience</button> </a>
+      <a href="{% url 'addproject' id %}"><button class="btn topbtn">Add Project</button> </a>
+      <a href="{% url 'addachivements' id  %}"><button class="btn topbtn">Add Achivements</button></a>
+    <a href="{% url 'addtraining' id  %}"><button class="btn topbtn">Add Training</button></a>
+
+    </div>
+
+    <div class="row top sp">
+      <div class="col-5  mt-2">
+
+        {% for i in data %}
+        <div class="sp1">
+          <table class="table mt-2 tbl">
+            <tr>
+              <th>Education</th>
+              <td>{{i.education_name}}</td>
+            </tr>
+            <tr>
+              <th>Passing Year</th>
+              <td>{{i.passing_year}}</td>
+            </tr>
+            <tr>
+              <th>Board/University</th>
+              <td>{{i.board_or_university}}</td>
+            </tr>
+            <tr>
+              <th>Grade/Percentage</th>
+              <td>{{i.percentage_or_grade}}</td>
+            </tr>
+          </table>
+          <a href="{% url 'updeducation' i.id %}"><button class="btn btn-sm btn-primary mb-2 ms-2">Update</button></a>
+          <a href="{% url 'deleducation' i.id %}"><button class="btn btn-sm btn-danger mb-2 ms-2">Delete</button></a>
+
+        </div>
+
+        {% endfor %}
+      </div>
+
+
+
+      <div class="col-6  mt-2">
+        <div class="margin">
+          <div class="row my-3">
+            <div  class="col-sm-6 offset-sm-3  bg left">
+              <h2>Add Education</h2>
+              <hr>
+
+              <form method="POST" class="form" class="shadow p-5">
+
+                {% csrf_token %}
+                <!-- person : <input type="text" value="{{id}}"> -->
+                {% for i in edform %}
+                <div class="form-group ms-5 me-5 font">
+                  <p class="margin"> {{i.label_tag}} {{i}}</p>
+                </div>
+                {% endfor %}
+
+                <input type="submit" value="Save" class="btn btn-primary mt-2 mb-2 ms-5">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock body %}

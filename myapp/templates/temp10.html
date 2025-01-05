@@ -1,0 +1,337 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<style>
+  
+    * {
+
+box-sizing: border-box;
+
+}
+
+    /* body {
+        margin: 0px auto;
+        padding: 0px;
+        
+        font-family: system-ui;
+
+    } */
+
+    .main {
+
+        width: 796px;
+        height: 1123px;
+        margin: auto;
+        /* box-shadow: 5px 21px 20px 20px #3d3f4238; */
+        background-color: #fff;
+    }
+
+
+    .profile {
+        width: 130px;
+        height: 130px;
+        margin-top: 20px;
+        float: right;
+
+    }
+
+    .img {
+        height: 18px;
+        width: 28px;
+        margin-right: 6px;
+    }
+    .call {
+        height: 16px;
+        width: 16x;
+        margin-right: 6px;
+    }
+
+    .box {
+        /* background-color: rgb(85, 228, 228); */
+        width: 690px;
+        height: 1123px;
+        margin-left: 55px;
+
+
+    }
+
+
+
+    .name {
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        /* margin-left: 170px; */
+        margin-top: 18px;
+        /* float: right; */
+        /* color: rgb(40, 105, 138); */
+        color: rgb(13, 13, 14);
+        /* color: rgb(50, 90, 150); */
+        text-align: center;
+    }
+
+    .ptop {
+        /* margin-top: 4px; */
+        font-size: 14px;
+        margin-bottom: 8px;
+        
+
+    }
+
+    .pt {
+      margin-left: 130px;
+        float: left;
+    }
+
+
+
+
+    hr {
+        
+        width: 40vw auto;
+        /* margin-top: 1px; */
+        /* border-bottom: 6px solid rgb(63, 123, 153); */
+        border-bottom: 6px solid rgb(13, 13, 14);
+        /* border-bottom: 6px solid rgb(50, 90, 150); */
+;
+    }
+
+    h3 {
+        margin-top: 40px;
+        /* background-color: rgb(73, 125, 151); */
+        font-size: 20px;
+        font-weight: 700;
+        /* margin-bottom: px; */
+        line-height: 23px;
+        /* color: rgb(40, 105, 138); */
+        color: rgb(13, 13, 14);
+        /* color: rgb(50, 90, 150); */
+    }
+
+    .row1 {
+        margin-top: 60px;
+
+    }
+
+    /* .bg {
+        background-color: rgb(73, 125, 151);
+        width:auto;
+    } */
+
+    .db {
+        float: right;
+        margin-top: 5px;
+
+        margin-right: 160px;
+
+        width: 10vw;
+        height: 6vh;
+        background-color: black;
+        color: #fff;
+        border: 2px solid white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .al {
+        margin-left: 150px;
+
+    }
+
+    .alg {
+        margin-left: 40px;
+    }
+</style>
+{% endblock style %}
+
+
+{% block body %}
+
+<body>
+    <button onclick="myfun('pt')" class="db">Download Now</button>
+    <div id="pt">
+        <div class="main">
+            <div class="box">
+                <div class="row">
+
+
+
+                    <p class="name">{{pdata.candidate_name}}</p>
+                    <hr>
+                    <!-- <hr class="hr"> -->
+
+                    <p class="ptop pt"><img src="{% static 'img/location.png' %}" alt="" class="img">{{pdata.address}} | <img src="{% static 'img/call.png' %}" alt="" class="call"> {{pdata.mobile}} |
+                        <img src="{% static 'img/mail.png' %}" alt="" class="img">  {{pdata.candidate_email}} 
+                        <!-- | <img src="{% static 'img/linked in.png' %}" alt=""
+                        class="img">{{pdata.linkedin_profile}} | <img src="{% static 'img/github.png' %}" alt=""
+                        class="img">{{pdata.github_profile}}  -->
+                        <!-- <img src="{% static 'img/facebook.png' %}" alt=""
+                        class="img">{{pdata.facebook_profile}}  -->
+
+                    </p>
+
+
+                    <!-- <p class="ptop">
+                       <img src="{% static 'img/myweb.png' %}" alt="" class="img">
+                    {{pdata.my_website}} | <img src="{% static 'img/twitter.png' %}" alt=""
+                    class="img">{{pdata.twitter_profile}}
+                </p> -->
+                    <!-- <p class="ptop pt"><img src="" alt="" class="img">
+                                {{pdata.mobile}} |
+                            </p>
+                            <p class="ptop pt"><img src="" alt=""
+                                    class="img">{{pdata.candidate_email}} |
+                                </p> -->
+                    <!-- <p class="ptop pt al"><img src="{% static 'img/myweb.png' %}" alt="" class="img">
+                            {{pdata.my_website}}
+                        </p> -->
+
+                    <!-- <br><br>
+                        <p class="ptop pt alg"><img src="{% static 'img/linked in.png' %}" alt=""
+                                class="img">{{pdata.linkedin_profile}}&nbsp;&nbsp;&nbsp;<img src="{% static 'img/git.png' %}" alt="" class="img">{{pdata.github_profile}}&nbsp;&nbsp;&nbsp;<img src="{% static 'img/facebook.png' %}" alt="" class="img">{{pdata.facebook_profile}}&nbsp;&nbsp;&nbsp;<img src="{% static 'img/twitter.png' %}" alt="" class="img">{{pdata.twitter_profile}}
+                        </p> -->
+                    <!-- <p class="ptop pt"><img src="{% static 'img/git.png' %}" alt="" class="img">
+                            {{pdata.github_profile}}</p>
+                        <p class="ptop pt"><img src="{% static 'img/facebook.png' %}" alt="" class="img">
+                            {{pdata.facebook_profile}}
+                        </p>
+                        <p class="ptop pt"><img src="{% static 'img/twitter.png' %}" alt="" class="img">
+                            {{pdata.twitter_profile}}</p> -->
+
+
+                </div>
+
+
+
+                <div class="row1">
+                    <div>
+                        <div class="bg">
+                            <h3>Objective</h3>
+                        </div>
+
+
+                        <p class="ptop">{{pdata.objective}}</p>
+                    </div>
+
+                    <div>
+                        <div class="bg">
+                            <h3>More Information</h3>
+                        </div>
+
+
+                        <p class="ptop"><b>Date of birth</b>- {{pdata.date_of_birth}}</p>
+                        <p class="ptop"><b>Marital Status</b> - {{pdata.marital_status}}</p>
+                        <p class="ptop"><b>Nationality </b> - {{pdata.nationality}}</p>
+                        <p class="ptop"><b>Language Known </b> - {{pdata.language_known}}</p>
+                        <p class="ptop"><b>Intrest </b> - {{pdata.interest}}</p>
+
+                    </div>
+                    {% if edata %}
+                    {% if pdata %}
+                    <div>
+                        <div class="bg">
+                            <h3>Skills </h3>
+                        </div>
+
+
+                        <p class="ptop">{{ pdata.skills}}</p>
+
+                    </div>
+                    {% endif %}
+                    <div>
+                        <div class="bg">
+                            <h3>Education </h3>
+                        </div>
+
+
+                        {% for i in edata %}
+                        <p class="ptop"><b>{{i.education_name}} </b> <br> {{i.board_or_university}} <br> 
+                            {{i.passing_year}}  <br> {{i.percentage_or_grade}}</p>
+                        {% endfor %}
+                        
+                        <p class="ptop"><b>Bachlor of Computer Application(BCA)
+
+                        </b> <br>Makhanlal Chaturvedi University,Bhopal <br> 
+                             Running</p>
+                        
+                    </div>
+                    {% endif %}
+
+                    {% if exdata %}
+                    <div>
+                        <div class="bg">
+                            <h3>Experience</h3>
+                        </div>
+
+
+                        {% for i in exdata %}
+                        <p class="ptop"> <b>{{i.company_name}}</b> -{{i.start_date}}-{{i.end_date}}
+                        </p>
+                        <p class="ptop">{{i.designation}} - {{i.description}}</p>
+                        {% endfor %}
+
+                    </div>
+                    {% endif %}
+                    {% if tdata %}
+                    <div>
+                        <div class="bg"> <h3>Training</h3></div>
+                            {% for i in tdata %}
+                            <p class="ptop"><span class="span1"><b>{{i.company_or_institute_name}}</b></span>
+                            </p>
+                            <p class="ptop"><span class="span1"><b>{{i.learn_skills}}</b> in  {{i.duration_in_month}} Months</span>
+                            </p>
+                            <p class="ptop"><span class="span1">{{i.description}}</span></p>
+                            {% endfor %}
+                     
+                    </div>
+                    {% endif %}
+                    
+                    {% if prdata %}
+                    <div>
+                        <div class="bg">
+                            <h3>Project</h3>
+                        </div>
+
+
+                        {% for i in prdata %}
+                        <p class="ptop"><b>{{i.project_title}}</b> - {{i.description}}
+                            <!-- -{{i.description}}   -->
+                        </p>  
+                        <p class="ptop">Skills applied - &nbsp;&nbsp; {{i.skills_apply}} <br>Duration-in-Months - &nbsp;&nbsp;{{i.duration_in_months}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    {% if adata %}
+                    <div>
+                        <div class="bg">
+                            <h3>Achivements </h3>
+                        </div>
+
+
+                        {% for i in adata %}
+                        <p class="ptop">{{i.title }} - {{i.description}}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+
+        function myfun(pa) {
+            var bk = document.body.innerHTML;
+            var dv = document.getElementById(pa).innerHTML;
+            document.body.innerHTML = dv;
+            window.print();
+        }
+    </script>
+    {% endblock body %}

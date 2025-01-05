@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+<style>
+  .tbl{
+width: 40vw;
+/* background-color: rgb(46, 49, 46); */
+color: #fff;
+
+}
+
+
+.sp{
+  margin-top: 40px;
+}
+
+body {
+    background-color: rgb(243, 247, 250);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url({% static 'img/laptop.jpg' %});
+  }
+ 
+.font {
+  font-size: 18px;
+  color: #fff;
+}
+
+hr {
+  height: 6px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  /* margin-left: 50px; */
+  margin-top: 20px;
+}
+
+
+
+.left {
+  margin-left:40px;
+  width: 50vw;
+  height: 205vh;
+}
+
+.margin {
+  margin-top: 20px;
+  margin-bottom: 3px;
+  /* padding-left: 10px; */
+}
+.btn1{
+  margin-top: 50px;
+  margin-left: 50px;
+ 
+}
+.topbtn{
+  width:14vw;
+  height: 5vh;
+  background-color: rgb(18, 20, 18);
+  color: #41c75c;
+  font-size: 18px;
+  border: 2px solid #fff;
+}
+.topbtn:hover{
+  background-color: #194923;
+  color: #fff;
+}
+.sp1{
+  margin-top: 56px;
+}
+</style>
+
+{% endblock style %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+
+  <body>
+    <div class="text-center mt-2">
+      <a href="{% url 'showinfo' id %}"><button class="btn topbtn">Show Information</button> </a>
+      <a href="{% url 'addeducation' id %}"><button class="btn topbtn">Add Education</button> </a>
+      <a href="{% url 'addexperience' id %}"><button class="btn topbtn">Add Experience</button> </a>
+      <a href="{% url 'addproject' id %}"><button class="btn topbtn">Add Project</button> </a>
+      <a href="{% url 'addachivements' id  %}"><button class="btn topbtn">Add Achivements</button></a>
+      <a href="{% url 'addtraining' id  %}"><button class="btn topbtn">Add Training</button></a>
+    </div>
+
+    <div class="row sp">
+      <div class="col-5 mt-2">
+
+        {% for i in data %}
+        <div class="sp1">
+          <table class="table  mt-2 tbl">
+            <tr>
+              <th>Image</th>
+              
+              {% if i.image %}
+              <td><img src="{{i.image.url}}" alt="" height="100" width="100"></td>
+              {% else %}
+              <td><img src=""  height="100" width="100" alt="img not found"></td>
+              {% endif %}
+                
+            </tr>
+            <tr>
+              <th>Name</th>
+              <td>{{i.candidate_name}}</td>
+            </tr>
+            <tr>
+              <th>E-mail</th>
+              <td>{{i.candidate_email}}</td>
+            </tr>
+            <tr>
+              <th>Date Of Birth</th>
+              <td>{{i.date_of_birth}}</td>
+            </tr>
+            <tr>
+              <th>Mobile</th>
+              <td>{{i.mobile}}</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>{{i.address}}</td>
+            </tr>
+            <tr>
+              <th>LinkedIn</th>
+              <td>{{i.linkedin_profile|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Facebook</th>
+              <td>{{i.facebook_profile|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Github</th>
+              <td>{{i.github_profile|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Twitter</th>
+              <td>{{i.twitter_profile|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Language known</th>
+              <td>{{i.language_known|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Skills</th>
+              <td>{{i.skills|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Interest</th>
+              <td>{{i.interest|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Marital Status</th>
+              <td>{{i.marital_status|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Nationality</th>
+              <td>{{i.nationality|default:""}}</td>
+            </tr>
+            <tr>
+              <th>Objective</th>
+              <td>{{i.objective}}</td>
+            </tr>
+          </table>
+          <a href="{% url 'updinfo' i.id %}"><button class="btn btn-sm btn-primary mb-2 ms-2">Update</button></a>
+
+
+        </div>
+
+        {% endfor %}
+      </div>
+
+
+      {% if infoform %}
+
+
+
+
+      <div class="col-6 mt-2">
+
+
+
+
+        <div class="margin">
+          <div class="row my-3 ">
+            <div  class="col-sm-6 offset-sm-3  bg left">
+              <h2>Add Personal Information</h2>
+              <hr>
+
+              <form method="POST" class="form" class="shadow p-5" enctype="multipart/form-data">
+                <!-- <h1 >Add Personal Information</h1> -->
+
+                {% csrf_token %}
+
+                {% for i in infoform %}
+                <div class="form-group ms-5 me-5 font">
+                  <p class="margin">{{i.label_tag}}</p> {{i}}
+                </div>
+                {% endfor %}
+
+
+                <div><input type="submit" value="Save" class="btn btn-primary btn1"> </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+{% endif %}
+{% endblock body %}

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<style>
+    table {
+        margin-top: 40px;
+        margin-left:20px;
+        width: 40vw;
+    }
+
+</style>
+{% endblock style %}
+
+{% block body %}
+<table cellpadding="25px" cellspacing="1px">
+
+    <tr class="tr1">
+        <td><a href="{% url 'temp1' id %}" class="btn btn-outline-primary link"><img src="{% static 'img/cv1.png' %}"
+                    alt=""></a></td>
+        <td><a href="{% url 'temp2' id %}" class="btn btn-outline-primary"><img src="{% static 'img/restt2.png' %}"
+                    alt=""></a></td>
+        <td> <a href="{% url 'temp3' id %}" class="btn btn-outline-primary"><img src="{% static 'img/restt3.png' %}"
+                    alt=""></a></td>
+       
+    </tr>
+
+    <tr class="tr2">
+        <td><a href="{% url 'temp4' id %}" class="btn btn-outline-primary"><img src="{% static 'img/cv4.png' %}"
+            alt=""></a></td>
+        <td> <a href="{% url 'temp5' id %}" class="btn btn-outline-primary"><img src="{% static 'img/restt5.png' %}"
+                    alt=""></a></td>
+        <td><a href="{% url 'temp6' id %}" class="btn btn-outline-primary"><img src="{% static 'img/restt6.png' %}"
+                    alt=""></a> </td>
+    </tr>
+    
+    
+    <tr class="tr3">
+        <td><a href="{% url 'temp7' id %}" class="btn btn-outline-primary"><img src="{% static 'img/cv7.png' %}"
+            alt=""></a></td>
+        <td> <a href="{% url 'temp8' id %}" class="btn btn-outline-primary"><img src="{% static 'img/cv8.png' %}"
+                    alt=""></a></td>
+        <td><a href="{% url 'temp9' id %}" class="btn btn-outline-primary"><img src="{% static 'img/cv9.png' %}"
+                    alt=""></a> </td>
+
+    </tr>
+
+    <tr class="tr3">
+        <td><a href="{% url 'temp11' id %}" class="btn btn-outline-primary"><img src="{% static 'img/777.png' %}"
+            alt=""></a></td>
+        <td> <a href="{% url 'temp12' id %}" class="btn btn-outline-primary"><img src="{% static 'img/888.png' %}"
+                    alt=""></a></td>
+        <td><a href="{% url 'temp13' id %}" class="btn btn-outline-primary"><img src="{% static 'img/999.png' %}"
+                    alt=""></a> </td>
+
+    </tr>
+    <tr class="tr3">
+        <td><a href="{% url 'temp10' id %}" class="btn btn-outline-primary"><img src="{% static 'img/10.png' %}"
+            alt=""></a> </td>
+
+    </tr>
+
+</table>
+
+
+{% endblock body %}
+
+
+

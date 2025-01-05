@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+
+<style>
+  body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url({% static 'img/laptop11.jpg' %});
+  }
+
+  .color {
+    background-color: #fff;
+  }
+
+  .font {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  hr {
+    height: 6px;
+    color: #fff;
+    margin-top: 30px;
+  }
+
+  h2 {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+    /* margin-left: 50px; */
+    margin-top: 20px;
+  }
+
+  .bg {
+    opacity: 0.8;
+  }
+
+  .left {
+    margin-left: 0px;
+    width: 50vw;
+  }
+
+  .margin {
+    margin-top: 50px;
+    padding-left: 90px;
+    /* background-color: aqua; */
+    height: 80vh;
+  }
+</style>
+{% endblock style %}
+{% block body %}
+
+<body>
+
+  <div class="margin">
+    <!-- <div class="color "> -->
+      <div class="row my-3 ">
+        <div style="background-color: rgb(26, 30, 34);" class="col-sm-6 offset-sm-3 bg left ">
+          <h2> Registration/SignUp</h2>
+          <hr>
+
+          <form action="" method="post" class="shadow p-5">
+
+            {% if msgs %}
+            <p class="alert alert-success mb-5 ">{{msgs}}</p>
+            {% elif msge %}
+            <p class="alert alert-danger mb-5">{{msge}}</p>
+            {% endif %}
+
+            {% csrf_token %}
+            {% for fm in myform %}
+            <div class="form-group mb-3 font">
+              {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors}}</small>
+            </div>
+            {% endfor %}
+            <input type="submit" value="Submit" class="btn btn-primary">
+            <br>
+            <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="{% url 'login' %}"
+                  class="text-danger">Login Now</a> </small></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock body %}

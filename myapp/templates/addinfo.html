@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style %}
+<!-- <link rel="stylesheet" href="{% static 'CSS/form.css' %}"> -->
+<style>
+  body {
+    /* background-color: rgb(243, 247, 250); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url({% static 'img/laptop.jpg' %});
+  }
+  .btn {
+  width: 52vw;
+  height: 50px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-left: 51px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.font {
+  font-size: 18px;
+  color: #fff;
+}
+
+hr {
+  height: 6px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  /* margin-left: 50px; */
+  margin-top: 20px;
+}
+
+
+
+.left {
+  margin-left:40px;
+  width: 60vw;
+  height: 200vh;
+}
+
+.margin {
+  margin-top: 20px;
+  margin-bottom: 3px;
+  /* padding-left: 10px; */
+}
+</style>
+{% endblock style %}
+
+
+
+{% block body %}
+
+<body>
+
+
+  <div class="margin">
+    <div class="row my-3 ">
+      <div  class="col-sm-6 offset-sm-3  bg left">
+        <h2>Add Personal Information</h2>
+        <hr>
+        {% if messages %}
+        {% for message in messages %}
+         <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        <form method="POST" class="form" class="shadow p-5" enctype="multipart/form-data">
+          <!-- <h1 >Add Personal Information</h1> -->
+
+          {% csrf_token %}
+          {% for fm in infoform %}
+          <div class="form-group ms-5 me-5 font">
+            <p class="margin"> {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small></p>
+          </div>
+         {% endfor %}
+         
+
+
+          <div><input type="submit" value="Save" class="btn btn-primary"> </div>
+          {% if infoform.non_field_errors %}
+          {% for error in infoform.non_field_errors %}
+           <p class="alert alert-danger my-3">{{error}}</p>
+          {% endfor %}
+         {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock body %}

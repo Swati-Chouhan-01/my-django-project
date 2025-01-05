@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<style>
+    body {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-image: url({% static 'img/laptop.jpg' %});
+    }
+    .box1 {
+          width: 100w;
+        height: 64vh;
+        margin: 50px 64px 0px 54px;
+        justify-content: space-around;
+     }
+    .home {
+        color: #fff;
+        font-family: cursive;
+        font-size: 30px;
+        padding-left: 190px;
+        text-align: left;
+        letter-spacing: 1px;
+    }
+    @font-face{
+        font-family:kruti dev;
+        src: url( '../../fonts/k010.ttf' )format("truetype");
+    }
+    .proname {
+        color: #fff;
+        /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+        font-family: kruti dev ;
+        font-size: 60px;
+        font-weight: bold;
+        padding-top: 150px;
+        padding-left: 160px;
+        letter-spacing: 5px;
+        text-align: left;
+    }
+    .home2 {
+        color: #fff;
+        padding-top: 40px;
+        padding-left: 40px;
+        font-size: 20px;
+        padding-right: 390px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .img {
+        width: 350px;
+        float: right;
+        margin-right: 50px;
+        height: 350px;
+        margin-top: 60px;
+    }
+    .btn1 {
+        margin-top: 40px;
+        margin-left: 220px;
+        height: 40px;
+        width: 20vw;
+        background-color: rgb(41, 95, 131);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 25px;
+        font-weight: bolder;
+        color: #fff;
+        border-radius: 35px;
+        border-color: #fff;
+    }
+    .btn1:hover {
+        background-color: white;
+        color: rgb(41, 95, 131)
+    }
+    * {
+        box-sizing: border-box;
+    }
+    .b1 {
+        background-color: black;
+        opacity: 0.8;
+        width: 350px;
+        height: 400px;
+        float: left;
+        margin: 10px;
+        color: #fff;
+    }
+    .b1:hover {
+        width: 480px;
+    }
+    .b1 h4 {
+        padding-top: 30px;
+        padding-left: 20px;
+    }
+    .b123 {
+        margin-left: 25px;
+    }
+    .verb {
+        color: #fff;
+        margin: 70px 64px 70px 54px;
+    }
+    .b2 {
+        background-color: black;
+        opacity: 0.8;
+        width: 90vw;
+        height: 240px;
+        margin: 5px;
+        color: #fff;
+    }
+    .sh {
+        font-size: 30px;
+        width: 90vw;
+        height: 60px;
+        background-color: rgb(41, 95, 131);
+        text-align: left;
+        padding-left: 20px;
+        padding-top: 8px;
+        font-weight: bold;
+    }
+    .cb {
+        margin-top: 10px;
+        margin-left: 15px;
+        height: 50px;
+        width: 20vw;
+        background-color: rgb(41, 95, 131);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 25px;
+        font-weight: bolder;
+        color: #fff;
+        border-radius: 35px;
+        border-color: #fff;
+    }
+    .cb:hover {
+        background-color: white;
+        color: rgb(41, 95, 131)
+    }
+    .steps {
+        font-size: 30px;
+        padding-top: 30px;
+        padding-left: 20px;
+        font-weight: bold;
+    }
+    .centerbox {
+        background-color: rgb(105, 88, 88);
+        opacity: 0.9;
+        width: 98vw;
+        height: 104vh;
+        margin: 40px 64px 70px 54px;
+        justify-content: space-around;
+    }
+    .home1 {
+        color: #2dabe6;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 50px;
+    }
+    .box2 {
+        width: 98w;
+        height: 104vh;
+        margin: 10px 64px 0px 54px;
+        justify-content: space-around;
+    }
+    .b2h {
+        font-size: 38px;
+        font-weight: bold;
+        color: #3399c2;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+</style>
+{% endblock style %}
+{% block bg %}
+<body>
+    {% endblock bg %}
+    {% block admin %}
+    {% if request.user.is_superuser %}
+    <li class="nav-item space hover">
+        <a class="nav-link active" aria-current="page" href="admin">Admin</a>
+    </li>
+    {% endif %}
+    {% endblock admin %}
+    {% block body %}
+    <div class="box1">
+        <div class="proname"> Resume Builder</div>
+        <div class="home"> Build Your Resume Fast and Easy</div>
+        {% if request.session.uname %}
+        <a href="{% url 'addinfo' %}"> <button class="btn1">Get Started Now >>></button></a>
+        {% else %}
+        <a href="{% url 'login' %}"> <button class="btn1"> Get Started Now >>></button></a>
+        {% endif %}
+    </div>
+    {% endblock body %}

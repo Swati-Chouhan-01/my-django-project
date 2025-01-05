@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block style %}
+<style>
+  body {
+    /* background-color: rgb(243, 247, 250); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url({% static 'img/laptop.jpg' %});
+  }
+  .btn1 {
+  width: 32vw;
+  height: 50px;
+  font-size: 20px;
+  /* margin-top: 50px; */
+  margin-left: 51px;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.font {
+  font-size: 18px;
+  color: #fff;
+}
+
+hr {
+  height: 6px;
+  color: #fff;
+  margin-top: 30px;
+}
+
+h2 {
+  font-size: 40px;
+  color: #fff;
+  text-align: center;
+  /* margin-left: 50px; */
+  margin-top: 20px;
+}
+
+/* .bg {
+  opacity: 0.6;
+} */
+
+.left {
+  margin-left:40px;
+  width: 40vw;
+  height: 45vh;
+}
+
+.margin {
+  margin-top: 20px;
+  margin-bottom: 3px;
+  /* padding-left: 10px; */
+}
+
+.tbl{
+width: 40vw;
+color: #fff;
+}
+.sp{
+  margin-top: 40px;
+}
+.sp1{
+  margin-top: 76px;
+}
+.topbtn{
+  width:14vw;
+  height: 5vh;
+  background-color: rgb(18, 20, 18);
+  color: #41c75c;
+  font-size: 18px;
+  border: 2px solid #fff;
+}
+.topbtn:hover{
+  background-color: #194923;
+  color: #fff;
+}
+</style>
+{% endblock style %}
+{% block body%}
+<div class="container-fluid">
+  <div class="text-center mt-2">
+    <a href="{% url 'showinfo' id %}"><button class="btn topbtn">Show Information</button> </a>
+    <a href="{% url 'addeducation' id %}"><button class="btn topbtn">Add Education</button> </a>
+    <a href="{% url 'addexperience' id %}"><button class="btn topbtn">Add Experience</button> </a>
+    <a href="{% url 'addproject' id %}"><button class="btn topbtn">Add Project</button> </a>
+    <a href="{% url 'addachivements' id  %}"><button class="btn topbtn">Add Achivements</button></a>
+    <a href="{% url 'addtraining' id  %}"><button class="btn topbtn">Add Training</button></a>
+
+  </div>
+
+  <div class="row sp">
+    <div class="col-5  mt-2">
+
+      {% for i in data %}
+      <div class="sp1">
+        <table class="table  mt-2 tbl ">
+          <tr>
+            <th>Title</th>
+            <td>{{i.title}}</td>
+          </tr>
+          <tr>
+            <th>Description</th>
+            <td>{{i.description}}</td>
+          </tr>
+        </table>
+        <a href="{% url 'updachivements' i.id %}"><button class="btn btn-sm btn-primary mb-2 ms-2">Update</button></a>
+        <a href="{% url 'delachivements' i.id %}"><button class="btn btn-sm btn-danger mb-2 ms-2">Delete</button></a>
+
+      </div>
+
+      {% endfor %}
+    </div>
+
+
+    <div class="col-6  mt-2">
+      <div class="margin">
+        <div class="row my-3">
+          <div class="col-sm-6 offset-sm-3  bg left">
+            <h2>Add achivements</h2>
+            <hr>
+
+            <form method="POST" class="form" class="shadow p-5">
+              <!-- <h1>add achivements</h1> -->
+              {% csrf_token %}
+              {% for i in achivform %}
+              <div class="form-group ms-5 me-5 font">
+                <p class="margin">  {{i.label_tag}} {{i}}</p>
+              </div>
+              {% endfor %}
+              <input type="submit" value="Save" class="btn btn-primary ms-5 mt-2 mb-2">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

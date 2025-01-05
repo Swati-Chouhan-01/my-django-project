@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block style %}
+
+
+<style>
+    body {
+
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-image: url({% static 'img/laptop11.jpg' %});
+
+    }
+
+.h{
+    background-color: #fff;
+        opacity: 0.8;
+        color: black;
+font-size: 40px;
+        text-align: center;
+        height: 70px auto;
+        /* padding-top: 20px; */
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-weight: bolder;
+}
+   .col1{
+        background-color: rgb(0, 0, 0);
+        opacity: 0.8;
+        color: white;
+        margin-top: 50px;
+        margin-left: 70px;
+        text-align: center;
+        /* height: 90vh; */
+        padding-top: 20px;
+        letter-spacing: 2px;
+        
+    }
+    .col2{
+        background-color: black;
+        opacity: 0.9;
+        color: white;
+        margin-top: 120px;
+        margin-left: 100px;
+        letter-spacing: 2px;
+        text-align: center;
+        height: 75vh;
+        padding-top: 20px;
+
+    }
+    h2{
+        font-size: 40px;
+        letter-spacing: 2px;
+
+    }
+    p{
+        font-size: 20px
+    }
+    ol{
+        font-size: 20px;
+        text-align: left;
+        letter-spacing: 1px;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+margin-top: 20px;
+    }
+    li{
+        margin-top: 15px;
+    }
+    .btn1 {
+        
+
+        margin-top: 15px;
+        /* margin-left:220px; */
+        height: 40px;
+        width: 20vw;
+        background-color: rgb(24, 83, 22);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-size: 25px;
+        font-weight: bolder;
+        color: #fff;
+        border-radius: 35px;
+        border-color: #fff;
+    }
+    .btn1:hover {
+        background-color: white;
+        color: rgb(24, 83, 22);
+    }
+    .p2{
+        text-align: justify;
+        padding: 10px 30px ;
+    }
+   
+</style>
+{% endblock style %}
+{% block body %}
+
+<body>
+
+               <div class="h">About Us</div>
+    <div class="row">
+        <div class="col-7 col1">
+            <h2>Build a Professional Resume in a Minut</h2><hr>
+            <p>You can pick one of our handcrafted resume templates.You can start building your resume in less than 5 seconds, using predefined sections approved by recruiters worldwide. Fill all entries and hit 'Download'. It's that easy to use, even if you've never made a resume in your life before!</p>
+            <p class="p2"> An online resume builder is a website developed to simplify the task of creating a resume for individuals. The application provides an effective means of designing desired resume in fact a professional looking resume. The system is flexible to be used and reduces the need of thinking and designing an appropriate resume according to qualifications. Usually, individuals get confused while creating a resume especially for a novice person such as graduate students. They don’t get a clear idea of what things and information must be included in a resume. Hence the system is developed to provide them an easy way for creating a professional looking resume.
+                This project is user-friendly and requires minimum human intervention. Individuals just have to fill up a form that specifies questions from all required fields such as personal questions, educational, qualities, interest, skills and so on. The answers provided by the users are stored and the system automatically generates a well structured resume. Users have option to create resume in any format and file.
+                </p>
+            
+        </div>
+        <div class="col-3 col2">
+            <h3>Simple Steps to Build  Your Resume</h3>
+            <hr>
+            <ol type="1" >
+                <li>Login</li>
+                <li>Click On Get Started now / My Resumes</li>
+                <li>Fill All Forms</li>
+                <li>Go to My Resumes</li>
+                <li>Choose Templates</li>
+                <li>Hit Download</li>
+            </ol>
+            {% if request.session.uname %}
+            <a href="{% url 'addinfo' %}"> <button class="btn1">Create My Resume</button></a>
+            {% else %}
+            <a href="{% url 'login' %}"> <button class="btn1"> Create My Resume</button></a>
+            {% endif %}
+        </div>
+        
+    </div>
+   
+</body>
+{% endblock body %}
